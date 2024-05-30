@@ -1,4 +1,7 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 using System.Data.SqlClient;
+using System.Text;
 using TI_Devops_2024_DemoAspMvc.BLL.Interfaces;
 using TI_Devops_2024_DemoAspMvc.BLL.Services;
 using TI_Devops_2024_DemoAspMvc.DAL.Interfaces;
@@ -21,6 +24,23 @@ builder.Services.AddScoped<SqlConnection>(sp =>
     return new SqlConnection(builder.Configuration.GetConnectionString("default"));
 });
 
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer
+    (options =>
+    {
+        options.SaveToken = true;
+        options.TokenValidationParameters = new TokenValidationParameters()
+        {
+            ValidateIssuer = true,
+            ValidateAudience = true,
+            ValidateLifetime = true,
+            ValidateIssuerSigningKey = true,
+            ValidIssuer = builder.Configuration["jwt:issuer"],
+            ValidAudience = builder.Configuration["jwt:audience"],
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["jwt:key"]))
+        };
+
+    });
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -32,6 +52,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
