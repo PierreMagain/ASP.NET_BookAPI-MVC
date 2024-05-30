@@ -16,5 +16,40 @@ namespace TI_Devops_2024.API.Mappers
                 AuthorId = book.AuthorId,
             };
         }
+
+        public static BookDetailsDTO ToDetailsDTO(this Book book) 
+        {
+            return new BookDetailsDTO
+            {
+                ISBN = book.ISBN,
+                Title = book.Title,
+                Description = book.Description,
+                PublishDate = book.PublishDate.ToShortDateString(),
+                Author = book.Author.toDTO(),
+            };
+        }
+
+        public static BookShortDTO ToShortDTO(this Book book)
+        {
+            return new BookShortDTO
+            {
+                Title = book.Title,
+                ISBN = book.ISBN,
+                PublishDate = book.PublishDate
+            };
+
+        }
+
+        public static IEnumerable<BookShortDTO> ToListDTO(this IEnumerable<Book> books) 
+        {
+            List<BookShortDTO> list = new List<BookShortDTO>();
+
+            foreach (Book item in books)
+            {
+                list.Add(item.ToShortDTO());
+            }
+
+            return list;
+        }
     }
 }
