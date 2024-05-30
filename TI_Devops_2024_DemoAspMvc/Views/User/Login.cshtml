@@ -1,0 +1,29 @@
+﻿@model TI_Devops_2024_DemoAspMvc.Models.UserLoginFormDTO
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<h1>Connection</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Login">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Login" class="control-label"></label>
+                <input asp-for="Login" class="form-control" />
+                <span asp-validation-for="Login" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Se connecter" class="btn btn-primary mt-2" />
+            </div>
+        </form>
+    </div>
+</div>

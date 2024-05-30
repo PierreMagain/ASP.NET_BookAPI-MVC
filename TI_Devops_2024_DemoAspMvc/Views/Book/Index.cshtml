@@ -1,0 +1,45 @@
+﻿@model List<BookShortDTO>
+
+
+<h1>Book List</h1>
+
+<a class="btn btn-primary" asp-controller="Book" asp-action="Add">Ajouter un livre</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Titre</th>
+            <th>Date de publication</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(BookShortDTO b in Model)
+        {
+            <tr>
+                <td>@b.Title</td>
+                <td>@b.PublishDate.ToShortDateString()</td>
+                <td>
+                    <a class="btn btn-primary" 
+                       asp-controller="Book" 
+                       asp-action="Details" 
+                       asp-route-isbn="@b.ISBN">
+                       Detail
+                   </a>
+                   <a class="btn btn-info"
+                       asp-controller="Book"
+                       asp-action="Edit"
+                       asp-route-isbn="@b.ISBN">
+                       Modifier
+                   </a>
+                   <a class="btn btn-danger"
+                       asp-controller="Book"
+                       asp-action="Delete"
+                       asp-route-isbn="@b.ISBN">
+                       Supprimer
+                   </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

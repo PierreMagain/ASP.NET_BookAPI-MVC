@@ -1,0 +1,33 @@
+﻿@using TI_Devops_2024_DemoAspMvc.Domain.Entities
+
+@model TI_Devops_2024_DemoAspMvc.Domain.Entities.PokemonResult
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Liste de pokemons</h1>
+
+<div>
+    @if (Model.previous != null)
+    {
+        <a class="btn btn-primary m-2" asp-action="Index" asp-route-url="@Model.previous">Précédent</a>
+    }
+    @if (Model.next != null)
+    {
+        <a class="btn btn-primary m-2" asp-action="Index" asp-route-url="@Model.next">Suivant</a>
+    }
+</div>
+
+<ul class="list-group">
+    @foreach (PokemonSimple p in Model.results)
+    {
+
+        <li class="list-group-item">
+            <p>@p.name</p>
+            <img src="@p.image"/>
+        </li>
+    }
+</ul>
+
+

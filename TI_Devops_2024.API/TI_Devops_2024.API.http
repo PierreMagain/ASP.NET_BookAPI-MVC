@@ -1,0 +1,6 @@
+@TI_Devops_2024.API_HostAddress = http://localhost:5242
+
+GET {{TI_Devops_2024.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
