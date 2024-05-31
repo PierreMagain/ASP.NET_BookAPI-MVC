@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+
+    <IsPackable>false</IsPackable>
+    <IsTestProject>true</IsTestProject>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="coverlet.collector" Version="6.0.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
+    <PackageReference Include="Moq" Version="4.20.70" />
+    <PackageReference Include="xunit" Version="2.5.3" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.5.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TI_Devops_2024.API\TI_Devops_2024.API.csproj" />
+    <ProjectReference Include="..\TI_Devops_2024_DemoAspMvc.BLL\TI_Devops_2024_DemoAspMvc.BLL.csproj" />
+    <ProjectReference Include="..\TI_Devops_2024_DemoAspMvc.DAL\TI_Devops_2024_DemoAspMvc.DAL.csproj" />
+    <ProjectReference Include="..\TI_Devops_2024_DemoAspMvc.DB\TI_Devops_2024_DemoAspMvc.DB.sqlproj" />
+    <ProjectReference Include="..\TI_Devops_2024_DemoAspMvc.Domain\TI_Devops_2024_DemoAspMvc.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Using Include="Xunit" />
+  </ItemGroup>
+
+</Project>

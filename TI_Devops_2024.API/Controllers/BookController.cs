@@ -5,6 +5,8 @@ using TI_Devops_2024_DemoAspMvc.Domain.Entities;
 using TI_Devops_2024.API.Models;
 using TI_Devops_2024.API.Mappers;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
 
 namespace TI_Devops_2024.API.Controllers
 {
@@ -27,12 +29,21 @@ namespace TI_Devops_2024.API.Controllers
             return Ok(_bookService.GetAll().Select(b => b.ToShortDTO()));
         }
 
+        [Authorize]
         [HttpGet("{isbn}")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(BookDetailsDTO))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public ActionResult<BookDetailsDTO> GetByISBN([FromRoute] string isbn)
         {
+            Claim? claimId = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
+            int id = int.Parse(claimId.Value);
+
+            if(id != 1)
+            {
+                return Unauthorized("Seul l'admin peut voir les détails des livres");
+            }
+
             if (string.IsNullOrWhiteSpace(isbn))
                 return BadRequest("ISBN ne peut pas être vide");
 

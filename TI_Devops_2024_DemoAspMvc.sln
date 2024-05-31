@@ -13,7 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TI_Devops_2024_DemoAspMvc.D
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TI_Devops_2024_DemoAspMvc.Domain", "TI_Devops_2024_DemoAspMvc.Domain\TI_Devops_2024_DemoAspMvc.Domain.csproj", "{5FD101F8-BE73-4BDE-9F38-E38EB108F69D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TI_Devops_2024.API", "TI_Devops_2024.API\TI_Devops_2024.API.csproj", "{B9A6AFE5-8F05-4F78-AB88-1F2431830FD5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TI_Devops_2024.API", "TI_Devops_2024.API\TI_Devops_2024.API.csproj", "{B9A6AFE5-8F05-4F78-AB88-1F2431830FD5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TI_Devops_2024.TEST", "TI_Devops_2024.TEST\TI_Devops_2024.TEST.csproj", "{AF461DA5-17BD-436F-AE7F-168695188089}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,6 +49,10 @@ Global
 		{B9A6AFE5-8F05-4F78-AB88-1F2431830FD5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B9A6AFE5-8F05-4F78-AB88-1F2431830FD5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B9A6AFE5-8F05-4F78-AB88-1F2431830FD5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF461DA5-17BD-436F-AE7F-168695188089}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF461DA5-17BD-436F-AE7F-168695188089}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF461DA5-17BD-436F-AE7F-168695188089}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF461DA5-17BD-436F-AE7F-168695188089}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

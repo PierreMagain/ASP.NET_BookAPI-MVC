@@ -10,10 +10,12 @@ namespace TI_Devops_2024_DemoAspMvc.BLL.Services
     {
 
         private readonly IUserRepository _userRepository;
+        private readonly IAuthService _authService;
 
-        public UserService(IUserRepository userRepository)
+        public UserService(IUserRepository userRepository, IAuthService authService)
         {
             _userRepository = userRepository;
+            _authService = authService;
         }
 
         public int Register(User u)
@@ -56,6 +58,23 @@ namespace TI_Devops_2024_DemoAspMvc.BLL.Services
             }
 
             return u;
+        }
+
+        public string LoginToken(string login, string password)
+        {
+            User? u = _userRepository.GetUserByUsernameOrEmail(login);
+
+            if (u is null)
+            {
+                throw new KeyNotFoundException("User doesn't exists");
+            }
+
+            if (!BCrypt.Net.BCrypt.Verify(password, u.Password))
+            {
+                throw new Exception("Wrong password");
+            }
+
+            return _authService.Generate(u);
         }
     }
 }

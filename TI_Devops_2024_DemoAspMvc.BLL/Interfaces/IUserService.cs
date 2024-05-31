@@ -11,5 +11,6 @@ namespace TI_Devops_2024_DemoAspMvc.BLL.Interfaces
     {
         int Register(User u);
         User Login(string login, string password);
+        string LoginToken(string login, string password);
     }
 }
